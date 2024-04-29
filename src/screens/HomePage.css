@@ -1,0 +1,84 @@
+.mainProductContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-left: 10%;
+  margin-right: 10%;
+}
+
+.display {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.found {
+  font-weight: bold;
+}
+
+.cardsContainer {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.cardContainer {
+  flex: 0 1 calc(33.33% - 1em);
+  margin-bottom: 2rem;
+}
+
+@media screen and (min-width: 1500px) {
+  .cardsContainer {
+    justify-content: center;
+  }
+  .cardContainer {
+    flex: 0 1 calc(25% - 1em);
+    margin-right: 20px;
+  }
+  .display {
+    margin-left: 12%;
+    margin-right: 13%;
+  }
+}
+
+@media screen and (min-width: 1650px) {
+  .cardsContainer {
+    justify-content: center;
+  }
+  .cardContainer {
+    flex: 0 1 calc(20% - 1em);
+  }
+  .display {
+    margin-left: 09%;
+    margin-right: 11%;
+  }
+}
+
+@media screen and (min-width: 2600px) {
+  .cardsContainer {
+    justify-content: center;
+  }
+  .cardContainer {
+    flex: 0 1 calc(15% - 2em);
+  }
+  .display {
+    margin-left: 6%;
+    margin-right: 9.5%;
+  }
+}
+
+@media screen and (max-width: 780px) {
+  .cardsContainer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+  .cardContainer {
+    flex: 0 1 calc(50% - 0.5em);
+  }
+
+  .display {
+    margin-left: 0%;
+    margin-right: 0%;
+  }
+}
