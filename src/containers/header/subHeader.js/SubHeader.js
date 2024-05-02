@@ -1,30 +1,38 @@
-import BasicDatePicker from "../../../components/BasicDatePicker";
+import { IoIosMenu } from "react-icons/io";
+import { CgMenuGridO } from "react-icons/cg";
+
 import "./SubHeader.css";
-import { DemoContainer } from "@mui/x-date-pickers/internals/demo";
-import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
-import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
-import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 
 const SubHeader = ({}) => {
   return (
-    <div className="flex gap-x-2 mb-16 mt-16 justify-center">
-      <select id="status">
+    <div className="flex gap-x-8 ml-16 mb-16 mt-16">
+      <button className="border-2 border-slate-100 rounded-lg p-1 hover:text-red-500">
+        <IoIosMenu size={36} />
+      </button>
+      <button className="border-2 border-slate-100 rounded-lg p-1 hover:text-red-500">
+        <CgMenuGridO size={36} />
+      </button>
+      <select id="status" className="p-2 border-none focus:border-none">
         <option value="option1">Status</option>
         <option value="option2">Option 2</option>
         <option value="option3">Option 3</option>
       </select>
-      <select id="contractor">
+      <select id="contractor" className="p-2 border-none">
         <option value="option1">Contractor</option>
         <option value="option2">Option 2</option>
         <option value="option3">Option 3</option>
       </select>
-      <input type="date" id="date1" value="12-01-2001" />
-      <select id="lastAction">
+      <input type="date" id="date1" className="p-2 border-none" />
+      <select id="lastAction" className="p-2 border-none">
         <option value="option1">Last Action By</option>
         <option value="option2">Option 2</option>
         <option value="option3">Option 3</option>
       </select>
-      <input type="date" id="approved" />
+      <input
+        type="date"
+        id="approved"
+        className="p-2 border-none active:border-none"
+      />
     </div>
   );
 };
