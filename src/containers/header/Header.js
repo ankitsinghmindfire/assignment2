@@ -14,7 +14,7 @@ const Header = ({}) => {
     { id: "h4", name: "Upload", to: "/" },
   ];
   return (
-    <div className="flex justify-between gap-x-4 items-center p-4 shadow-md">
+    <div className="flex justify-evenly gap-x-4 items-center p-4 shadow-md">
       <div className="flex gap-x-8">
         <div className="w-16 h-16">
           <img src={dummyImage} alt="" />
@@ -22,29 +22,29 @@ const Header = ({}) => {
         <p className="w-20 font-bold">Contractor Invoice Portal</p>
         <div className="border-2 border-neutral-400"></div>
       </div>
-      <ul className="flex gap-x-24">
+      <ul className="flex gap-x-16">
         {headerItems.map((item) => (
-          <li key={item?.id} className="text-blue-800 hover:text-red-500">
+          <li key={item?.id} className="text-blue-800 hover:text-sky-500">
             <a href={item?.to}>{item?.name}</a>
           </li>
         ))}
       </ul>
-      <div className="flex gap-x-4 text-rose-600">
-        <div>Admin</div>
+      <div className="flex gap-x-2 ml--5">
+        <a href="">Admin</a>
         <div
-          className="flex bg-slate-200"
+          className="flex bg-slate-200 hover:text-sky-500"
           onMouseEnter={() => setShow(true)}
           onMouseLeave={() => setShow(false)}
         >
           <CgProfile size={36} />
-          <span className="mt-2">
+          <span className="mt-2 rounded-lg">
             <IoCaretDownSharp size={18} />
           </span>
           {show && (
-            <div className="bg-white p-2 mt-6 absolute">
-              <p>Link 1</p>
-              <p>Link 2</p>
-              <p>Link 3</p>
+            <div className="bg-slate-200 p-2 mt-6 absolute text-blue-800 rounded-lg w-28">
+              <p className="hover:text-sky-500">My Account</p>
+              <p className="hover:text-sky-500">Profile</p>
+              <p className="hover:text-sky-500">Sign Out</p>
             </div>
           )}
         </div>

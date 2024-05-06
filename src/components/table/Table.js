@@ -1,47 +1,67 @@
+import { useEffect, useState } from "react";
 import MUIDataTable from "mui-datatables";
+import { createMuiTheme, MuiThemeProvider } from "@material-ui/core/styles";
+import { withStyles } from "@material-ui/core/styles";
+import axios from "axios";
 
-const ExpandableRowTable = () => {
-  const columns = [
-    { name: "Series" },
-    { name: "Description" },
-    {
-      name: "Number of versions",
-    },
-    {
-      name: "Last action date",
-    },
-    {
-      name: "Last action date",
-    },
-    {
-      name: "Last Action by",
-    },
-  ];
+const styles = (theme) => ({
+  tableRoot: {
+    backgroundColor: "#f0f0f0",
+  },
+});
 
-  const data = [
-    [1, "Snow", "Jon", 14, "22/10/2022", "25/12/2025"],
-    [2, "Lannister", "Cersei", 31, "22/10/2022", "25/12/2025"],
-    [3, "Lannister", "Jaime", 31, "22/10/2022", "25/12/2025"],
-    [4, "Stark", "Arya", 11, "22/10/2022", "25/12/2025"],
-    [5, "Targaryen", "Daenerys", 31, "22/10/2022", "25/12/2025"],
-    [6, "Melisandre", null, 15, "22/10/2022", "25/12/2025"],
-    [7, "Clifford", "Ferrara", 44, "22/10/2022", "25/12/2025"],
-    [8, "Frances", "Rossini", 36, "22/10/2022", "25/12/2025"],
-    [9, "Roxie", "Harvey", 65, "22/10/2022", "25/12/2025"],
-  ];
+const columns = [
+  { name: "Series" },
+  { name: "Description" },
+  {
+    name: "Number of versions",
+  },
+  {
+    name: "Last action date",
+  },
+  {
+    name: "Last action date",
+  },
+  {
+    name: "Last Action by",
+  },
+];
 
-  const rows = [
-    [3, "Approved", "12/01/2292", "Joe Smith"],
-    [2, "Rejected", "12/01/2292", "Test name"],
-    [1, "Rejected", "12/01/2292", "New name"],
-  ];
+const columnsData = [
+  { name: "Version" },
+  { name: "Status" },
+  { name: "Last Action Date" },
+  { name: "Last Action By" },
+];
 
-  const columnsData = [
-    { name: "Version" },
-    { name: "Status" },
-    { name: "Last Action Date" },
-    { name: "Last Action By" },
-  ];
+const ExpandableRowTable = ({ classes }) => {
+  const [data, setData] = useState([]);
+  const [rowsData, setRowsData] = useState([]);
+
+  const getMuiTheme = () =>
+    createMuiTheme({
+      overrides: {
+        MUIDataTableBodyCell: {
+          root: {
+            backgroundColor: "#FF0000",
+          },
+        },
+        ".tss-1vd39vz-MUIDataTableBodyCell-stackedCommon": {
+          color: "#ff0000",
+        },
+      },
+    });
+
+  useEffect(() => {
+    const getData = async () => {
+      const data = await axios.get("http://localhost:3000/data");
+      const rowsData = await axios.get("http://localhost:3000/rows");
+      setRowsData(rowsData?.data);
+      setData(data?.data);
+    };
+
+    getData();
+  }, []);
 
   const options = {
     expandableRows: true,
@@ -53,7 +73,7 @@ const ExpandableRowTable = () => {
     renderExpandableRow: () => {
       return (
         <MUIDataTable
-          data={rows}
+          data={rowsData}
           columns={columnsData}
           options={{
             search: false,
@@ -67,7 +87,16 @@ const ExpandableRowTable = () => {
     },
   };
 
-  return <MUIDataTable data={data} columns={columns} options={options} />;
+  return (
+    <MuiThemeProvider theme={getMuiTheme}>
+      <MUIDataTable
+        data={data}
+        columns={columns}
+        options={options}
+        classes={{ root: classes.tableRoot }}
+      />
+    </MuiThemeProvider>
+  );
 };
 
-export default ExpandableRowTable;
+export default withStyles(styles)(ExpandableRowTable);

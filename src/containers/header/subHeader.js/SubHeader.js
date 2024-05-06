@@ -5,11 +5,11 @@ import "./SubHeader.css";
 
 const SubHeader = ({}) => {
   return (
-    <div className="flex gap-x-8 ml-16 mb-16 mt-16">
-      <button className="border-2 border-slate-100 rounded-lg p-1 hover:text-red-500">
+    <div className="flex gap-x-8 ml-16 mb-8 mt-8">
+      <button className="border-2 border-slate-100 rounded-lg p-1 bg-slate-200 hover:text-sky-500">
         <IoIosMenu size={36} />
       </button>
-      <button className="border-2 border-slate-100 rounded-lg p-1 hover:text-red-500">
+      <button className="border-2 border-slate-100 rounded-lg p-1 bg-slate-200 hover:text-sky-500">
         <CgMenuGridO size={36} />
       </button>
       <select id="status" className="p-2 border-none focus:border-none">

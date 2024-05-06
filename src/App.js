@@ -7,8 +7,8 @@ function App() {
   return (
     <>
       <Header />
-      <SubHeader />
       <SubMenu />
+      <SubHeader />
       <HomePage />
     </>
   );
