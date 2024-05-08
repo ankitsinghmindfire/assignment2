@@ -13,7 +13,7 @@ const Header = () => {
     { id: "h4", name: "Upload", to: "/" },
   ];
   return (
-    <div className="flex justify-around items-center p-4 shadow-md">
+    <div className="flex justify-around items-center p-1 shadow-md bg-gradient-to-r from-violet-500 to-fuchsia-500">
       <div className="flex items-center">
         <div className="w-16 h-16 mr-4">
           <img src={dummyImage} alt="" />
@@ -59,7 +59,10 @@ const Header = () => {
       <div className="hidden md:flex md:items-center">
         <ul className="flex gap-x-8">
           {headerItems.map((item) => (
-            <li key={item?.id} className="text-blue-800 hover:text-sky-500">
+            <li
+              key={item?.id}
+              className="text-white bg-blue-950 p-1 rounded hover:text-sky-500"
+            >
               <a href={item?.to}>{item?.name}</a>
             </li>
           ))}
@@ -79,7 +82,7 @@ const Header = () => {
             <IoCaretDownSharp size={18} />
           </span>
           {showMenu && (
-            <div className="bg-slate-200 p-2 mt-6 absolute text-blue-800 rounded-lg w-28">
+            <div className="p-2 mt-6 absolute text-white bg-blue-950 rounded-lg w-28">
               <p className="hover:text-sky-500">My Account</p>
               <p className="hover:text-sky-500">Profile</p>
               <p className="hover:text-sky-500">Sign Out</p>

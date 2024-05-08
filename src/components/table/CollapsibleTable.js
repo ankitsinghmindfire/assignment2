@@ -33,7 +33,7 @@ const CollapsibleTable = ({}) => {
   return (
     <div className="w-full">
       <table className="table-auto">
-        <thead className="border-b-2 rounded">
+        <thead className="border-b-2">
           {columns.map((item) => (
             <th key={item?.name} className="p-5">
               {item?.name}
