@@ -13,7 +13,7 @@ const Header = () => {
     { id: "h4", name: "Upload", to: "/" },
   ];
   return (
-    <div className="flex justify-between items-center p-4 shadow-md">
+    <div className="flex justify-around items-center p-4 shadow-md">
       <div className="flex items-center">
         <div className="w-16 h-16 mr-4">
           <img src={dummyImage} alt="" />
@@ -64,27 +64,27 @@ const Header = () => {
             </li>
           ))}
         </ul>
-        <div className="flex gap-x-2 ml--5">
-          <a href="" className="mt-1 mr-2">
-            Admin
-          </a>
-          <div
-            className="flex bg-slate-200 hover:text-sky-500 rounded"
-            onMouseEnter={() => setShowMenu(true)}
-            onMouseLeave={() => setShowMenu(false)}
-          >
-            <CgProfile size={36} />
-            <span className="mt-2 rounded-lg">
-              <IoCaretDownSharp size={18} />
-            </span>
-            {showMenu && (
-              <div className="bg-slate-200 p-2 mt-6 absolute text-blue-800 rounded-lg w-28">
-                <p className="hover:text-sky-500">My Account</p>
-                <p className="hover:text-sky-500">Profile</p>
-                <p className="hover:text-sky-500">Sign Out</p>
-              </div>
-            )}
-          </div>
+      </div>
+      <div className="flex gap-x-2 ml--5">
+        <a href="" className="mt-1 mr-2">
+          Admin
+        </a>
+        <div
+          className="flex bg-slate-200 hover:text-sky-500 rounded"
+          onMouseEnter={() => setShowMenu(true)}
+          onMouseLeave={() => setShowMenu(false)}
+        >
+          <CgProfile size={36} />
+          <span className="mt-2 rounded-lg">
+            <IoCaretDownSharp size={18} />
+          </span>
+          {showMenu && (
+            <div className="bg-slate-200 p-2 mt-6 absolute text-blue-800 rounded-lg w-28">
+              <p className="hover:text-sky-500">My Account</p>
+              <p className="hover:text-sky-500">Profile</p>
+              <p className="hover:text-sky-500">Sign Out</p>
+            </div>
+          )}
         </div>
       </div>
     </div>
