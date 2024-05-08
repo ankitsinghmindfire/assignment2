@@ -1,12 +1,11 @@
 import { useState } from "react";
 import { CgProfile } from "react-icons/cg";
 import { IoCaretDownSharp } from "react-icons/io5";
-
 import dummyImage from "../../assets/icons/download.png";
-import "./Header.css";
 
-const Header = ({}) => {
-  const [show, setShow] = useState(false);
+const Header = () => {
+  const [showMenu, setShowMenu] = useState(false);
+
   const headerItems = [
     { id: "h1", name: "Dashboard", to: "/" },
     { id: "h2", name: "Manage", to: "/" },
@@ -14,39 +13,78 @@ const Header = ({}) => {
     { id: "h4", name: "Upload", to: "/" },
   ];
   return (
-    <div className="flex justify-evenly gap-x-4 items-center p-4 shadow-md">
-      <div className="flex gap-x-8">
-        <div className="w-16 h-16">
+    <div className="flex justify-between items-center p-4 shadow-md">
+      <div className="flex items-center">
+        <div className="w-16 h-16 mr-4">
           <img src={dummyImage} alt="" />
         </div>
-        <p className="w-20 font-bold">Contractor Invoice Portal</p>
-        <div className="border-2 border-neutral-400"></div>
+        <div className="bg-blue-950 p-1 rounded">
+          <p className="w-20 text-white font-bold">Contractor Invoice Portal</p>
+        </div>
       </div>
-      <ul className="flex gap-x-16">
-        {headerItems.map((item) => (
-          <li key={item?.id} className="text-blue-800 hover:text-sky-500">
-            <a href={item?.to}>{item?.name}</a>
-          </li>
-        ))}
-      </ul>
-      <div className="flex gap-x-2 ml--5">
-        <a href="">Admin</a>
-        <div
-          className="flex bg-slate-200 hover:text-sky-500"
-          onMouseEnter={() => setShow(true)}
-          onMouseLeave={() => setShow(false)}
+      <div className="md:hidden">
+        <button
+          onClick={() => setShowMenu(!showMenu)}
+          className="inline-flex items-center justify-center p-2 rounded-md text-gray-500 hover:text-gray-900 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 focus:text-gray-900"
         >
-          <CgProfile size={36} />
-          <span className="mt-2 rounded-lg">
-            <IoCaretDownSharp size={18} />
-          </span>
-          {show && (
-            <div className="bg-slate-200 p-2 mt-6 absolute text-blue-800 rounded-lg w-28">
-              <p className="hover:text-sky-500">My Account</p>
-              <p className="hover:text-sky-500">Profile</p>
-              <p className="hover:text-sky-500">Sign Out</p>
-            </div>
-          )}
+          <svg
+            className="h-6 w-6"
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            aria-hidden="true"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth="2"
+              d="M4 6h16M4 12h16m-7 6h7"
+            />
+          </svg>
+        </button>
+        {showMenu && (
+          <ul className="absolute mt-10 py-2 px-4 bg-white shadow-md rounded-md right-[0%]">
+            {headerItems.map((item) => (
+              <li key={item?.id} className="text-blue-800 hover:text-sky-500">
+                <a href={item?.to}>{item?.name}</a>
+              </li>
+            ))}
+            <li className="text-blue-800 hover:text-sky-500">
+              <a href="">Admin</a>
+            </li>
+          </ul>
+        )}
+      </div>
+      <div className="hidden md:flex md:items-center">
+        <ul className="flex gap-x-8">
+          {headerItems.map((item) => (
+            <li key={item?.id} className="text-blue-800 hover:text-sky-500">
+              <a href={item?.to}>{item?.name}</a>
+            </li>
+          ))}
+        </ul>
+        <div className="flex gap-x-2 ml--5">
+          <a href="" className="mt-1 mr-2">
+            Admin
+          </a>
+          <div
+            className="flex bg-slate-200 hover:text-sky-500 rounded"
+            onMouseEnter={() => setShowMenu(true)}
+            onMouseLeave={() => setShowMenu(false)}
+          >
+            <CgProfile size={36} />
+            <span className="mt-2 rounded-lg">
+              <IoCaretDownSharp size={18} />
+            </span>
+            {showMenu && (
+              <div className="bg-slate-200 p-2 mt-6 absolute text-blue-800 rounded-lg w-28">
+                <p className="hover:text-sky-500">My Account</p>
+                <p className="hover:text-sky-500">Profile</p>
+                <p className="hover:text-sky-500">Sign Out</p>
+              </div>
+            )}
+          </div>
         </div>
       </div>
     </div>
